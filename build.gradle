@@ -1,0 +1,70 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+configurations {
+	provided
+	compile.extendsFrom provided
+}
+
+compileJava {
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+	options.debug = true
+	options.debugOptions.debugLevel = "source,lines,vars"
+}
+
+dependencies {
+	compile 'org.stagemonitor:stagemonitor-web:0.11.1'
+	compile 'org.slf4j:slf4j-simple:1.7.7'
+	provided 'javax.servlet:javax.servlet-api:3.0.1'
+
+	testCompile 'junit:junit:4.11'
+	testCompile 'org.mockito:mockito-all:1.10.8'
+	testCompile 'org.springframework:spring-webmvc:4.1.0.RELEASE'
+	testCompile 'org.springframework:spring-test:4.1.0.RELEASE'
+}
+
+
+// publish
+buildscript {
+	repositories {
+		jcenter()
+	}
+
+	dependencies {
+		classpath 'com.bmuschko:gradle-nexus-plugin:2.0'
+	}
+}
+apply plugin: 'com.bmuschko.nexus'
+
+modifyPom {
+	project {
+		dependencies {
+			(project.configurations.compile.allDependencies - project.configurations.provided.allDependencies)
+					.each { dep ->
+				dependency {
+					groupId dep.group
+					artifactId dep.name
+					version dep.version
+					scope 'compile'
+				}
+			}
+			project.configurations.provided.allDependencies.each { dep ->
+				dependency {
+					groupId dep.group
+					artifactId dep.name
+					version dep.version
+					scope 'provided'
+				}
+			}
+		}
+		name "stagemonitor ajax timer plugin"
+	}
+}
+
