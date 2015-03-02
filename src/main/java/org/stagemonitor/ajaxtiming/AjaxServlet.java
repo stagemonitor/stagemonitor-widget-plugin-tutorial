@@ -1,8 +1,5 @@
 package org.stagemonitor.ajaxtiming;
 
-import static com.codahale.metrics.MetricRegistry.name;
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,9 +28,9 @@ public class AjaxServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		for (AjaxStats ajaxStats : JsonUtils.getMapper().readValue(req.getInputStream(), AjaxStats[].class)) {
-			metricRegistry.timer("request.All.ajax.time.total").update(ajaxStats.getDuration(), MILLISECONDS);
-			String name = name("request", GraphiteSanitizer.sanitizeGraphiteMetricSegment(ajaxStats.getUrl()), "ajax.time.total");
-			metricRegistry.timer(name).update(ajaxStats.getDuration(), MILLISECONDS);
+			// TODO create a timer for "request.All.ajax.time.total"
+			String url = GraphiteSanitizer.sanitizeGraphiteMetricSegment(ajaxStats.getUrl());
+			// TODO create a timer for name("request", url, "ajax.time.total")
 		}
 		resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
 	}

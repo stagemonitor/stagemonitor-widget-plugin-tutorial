@@ -4,13 +4,13 @@
 			// the pluginId
 			// has to be the same as the filename of the JS and html file
 			// also, the html and the JS file have to be in the same folder
-			id: "ajax-timing",
+			id: "TODO",
 			// The label displayed in the side menu of the metrics tab
 			label: "Ajax",
 			// creates searchable and pageable datatable
 			table: {
 				// jQuery expression of a element in the plugin html file the table should be bound to
-				bindto: "#ajax-timing-table",
+				bindto: "TODO bind to <table id='ajax-timing-table'> in ajax-timing.html",
 				// the label of the first column
 				nameLabel: "Name",
 				columns: [
@@ -31,36 +31,7 @@
 						metric: "max",
 						title: "Max"
 					},
-					{
-						metricCategory: "timers",
-						metricPathRegex: /request.([^\.]+).ajax.time.total/,
-						metric: "mean",
-						title: "Mean"
-					},
-					{
-						metricCategory: "timers",
-						metricPathRegex: /request.([^\.]+).ajax.time.total/,
-						metric: "min",
-						title: "Min"
-					},
-					{
-						metricCategory: "timers",
-						metricPathRegex: /request.([^\.]+).ajax.time.total/,
-						metric: "p50",
-						title: "p50"
-					},
-					{
-						metricCategory: "timers",
-						metricPathRegex: /request.([^\.]+).ajax.time.total/,
-						metric: "p95",
-						title: "p95"
-					},
-					{
-						metricCategory: "timers",
-						metricPathRegex: /request.([^\.]+).ajax.time.total/,
-						metric: "stddev",
-						title: "Std. Dev."
-					}
+					{"TODO": "add columns for the metrics mean, min, p50, p95, stddev"},
 				],
 				// Optionally graph templates can be defined.
 				// Those templates contain the placeholder ${rowName}
@@ -72,7 +43,7 @@
 						{
 							template: {
 								// jQuery expression of a element in the plugin html file the graph should be bound to
-								bindto: '#ajax-time',
+								bindto: "TODO bind to <div id='ajax-time'> in ajax-timing.html",
 								// the minimal value of the y-axis in the graph
 								min: 0,
 								// the maximum value of the y-axis in the graph
@@ -97,7 +68,7 @@
 						},
 						{
 							template: {
-								bindto: '#ajax-throughput',
+								bindto: "TODO bind to <div id='ajax-throughput'> in ajax-timing.html",
 								min: 0,
 								format: 'requests/sec',
 								fill: 0.1,

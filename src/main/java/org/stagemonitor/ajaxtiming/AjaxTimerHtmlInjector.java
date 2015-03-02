@@ -24,8 +24,8 @@ public class AjaxTimerHtmlInjector implements HtmlInjector {
 
 	private String buildAjaxTimingSnippet(String contextPath) {
 		try {
-			return IOUtils.toString(getClass().getClassLoader().getResourceAsStream("time-ajax-requests.html"))
-					.replace("@@CONTEXT_PREFIX_PATH@@", contextPath);
+			// TODO replace the @@CONTEXT_PREFIX_PATH@@ placeholder in time-ajax-requests with the actual contextPath
+			return IOUtils.toString(getClass().getClassLoader().getResourceAsStream("time-ajax-requests.html"));
 		} catch (IOException e) {
 			logger.warn(e.getMessage(), e);
 			return "";

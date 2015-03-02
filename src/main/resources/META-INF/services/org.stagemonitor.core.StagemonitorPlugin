@@ -1,1 +1,2 @@
-org.stagemonitor.ajaxtiming.AjaxTimingPlugin
+# This file is needed so that java.util.ServiceLoader.load(StagemonitorPlugin.class) finds our AjaxTimingPlugin
+# TODO add the canonical class name of AjaxTimingPlugin

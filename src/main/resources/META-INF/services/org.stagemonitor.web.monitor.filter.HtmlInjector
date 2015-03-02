@@ -1,1 +1,2 @@
-org.stagemonitor.ajaxtiming.AjaxTimerHtmlInjector
+# This file is needed so that java.util.ServiceLoader.load(HtmlInjector.class) finds our AjaxTimerHtmlInjector
+# TODO add the canonical class name of AjaxTimerHtmlInjector

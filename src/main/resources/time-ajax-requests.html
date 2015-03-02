@@ -32,7 +32,8 @@
 						timeoutId = window.setTimeout(function () {
 							var xhr = new XHR();
 							xhr.noIntercept = true;
-							xhr.open("POST", "@@CONTEXT_PREFIX_PATH@@/stagemonitor/ajax", true);
+							// add proper URL (see value of @WebServlet annotation in AjaxServlet)
+							xhr.open("POST", "@@CONTEXT_PREFIX_PATH@@/", true);
 							xhr.setRequestHeader("Content-type", "application/json");
 							xhr.send(JSON.stringify(stats));
 
